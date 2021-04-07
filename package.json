@@ -1,0 +1,26 @@
+{
+  "name": "minipack-simulate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gloomyKevin/minipack-simulate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gloomyKevin/minipack-simulate/issues"
+  },
+  "homepage": "https://github.com/gloomyKevin/minipack-simulate#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/parser": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/traverse": "^7.13.13"
+  }
+}
