@@ -32,26 +32,56 @@ const babelParser = require('@babel/parser')
 const traverse = require('@babel/traverse').default
 const {transformFromAst} = require('@babel/core')
 const config = require('./minipack.config.js')
+// const { Parser } = require('webpack')
+// const { relative } = require('path')
 const entry = config.entry
 const output = config.path
 
-function createAsset(filename) {
-    const content = fs.readFileSync(filename, 'utf-8')
-    const ast = babelParser.parse(content, {
-        sourceType: 'module'
-    })
-    const dependencies = []
-    traverse(ast, {
-        ImportDeclaration: ({node}) => {
-            dependencies.push(node.source.value)
-        }
-    })
-    const {code} = transformFromAst(ast, null, {
-        presets: ['@babel/preset-env']
-    }) 
-    return {
-        dependencies,
-        code
-    }
-}
+const content = fs.readFileSync(entry, "utf-8")
+const ast = babelParser.parse(content, {
+    sourceType: "module"
+})
+console.log(ast)
 
+// function createAsset(filename) {
+//     const content = fs.readFileSync(filename, 'utf-8')
+//     const ast = babelParser.parse(content, {
+//         sourceType: 'module'
+//     })
+//     const dependencies = []
+//     traverse(ast, {
+//         ImportDeclaration: ({node}) => {
+//             dependencies.push(node.source.value)
+//         }
+//     })
+//     const {code} = transformFromAst(ast, null, {
+//         presets: ['@babel/preset-env']
+//     }) 
+//     return {
+//         dependencies,
+//         code
+//     }
+// }
+
+// // 获取入口文件
+// const mainAssert = createAsset(entry)
+// // 创建依赖图
+// // entry为入口文件的绝对地址
+// const graph = {
+//     [entry]: mainAssert
+// }
+// // 递归搜索所有依赖模块，加入到依赖关系图中
+// function recursionDep(filename ,assert) {
+//     assert.mapping = {}
+//     const dirname = path.dirname(filename)
+//     assert.dependencies.forEach((relativePath) => {
+//         const absolutePath = path.join(dirname, relativePath)
+//         assert.mapping[relativePath] = absolutePath
+//     })
+// }
+// // 从入口开始递归
+// // 遍历queue，获取每一个assert以及其所依赖的模块，并将其加入到队列，直到所有依赖模块遍历完成
+// for(let filename in queue) {
+//     let assert = queue[filename]
+    
+// }
